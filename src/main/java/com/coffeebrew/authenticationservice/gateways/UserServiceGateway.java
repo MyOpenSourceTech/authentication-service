@@ -1,15 +1,14 @@
 package com.coffeebrew.authenticationservice.gateways;
 
 import com.coffeebrew.authenticationservice.models.User;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
 
-@FeignClient(name = "user-service", url = "localhost:3001")
+@FeignClient(name = "user-service")
+@RibbonClient(name = "user-service")
 public interface UserServiceGateway {
 
     @PostMapping("/users")
