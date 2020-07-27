@@ -7,16 +7,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
-@FeignClient(name = "gateway-server")
+@FeignClient(name = "user-service")
 @RibbonClient(name = "user-service")
 public interface UserServiceGateway {
 
-    @PostMapping("/user-service/users")
+    @PostMapping("/users")
     public ResponseEntity<User> save(@RequestBody User user);
 
-    @GetMapping(path = "/user-service/users/{id}")
+    @GetMapping(path = "/users/{id}")
     public ResponseEntity<User> getById(@PathVariable String id);
 
-    @GetMapping("/user-service/users")
+    @GetMapping("/users")
     public ResponseEntity<User> getByName(@RequestParam("name") String name);
 }
